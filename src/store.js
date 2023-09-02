@@ -19,6 +19,11 @@ let taskListStore = [
         id:3,
         status:'task_work',
     },
+    {
+        text:'Задача 5',
+        id:4,
+        status:'task_complete',
+    },
 ];
 
 export default taskListStore;
