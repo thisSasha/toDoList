@@ -85,6 +85,10 @@ h1 {
     font-size: 1.4em;
 }
 
+i {
+    pointer-events: none;
+}
+
 .fa-check {
     opacity: 0;
     transition: 0.4s;
