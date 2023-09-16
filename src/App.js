@@ -16,6 +16,15 @@ function App() {
     };
   };
 
+  function inputEnterText(e) {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      if (e.target.value != '' && e.target.value != ' ') {
+        newTaskStore(e.target.value);
+        e.target.value = '';
+      };
+    };
+  };
 
 
 
@@ -23,7 +32,7 @@ function App() {
     <div className="App">
       <h1>Список задач</h1>
       <div className='App__control-center'>
-        <input type="text" />
+        <input type="text" onKeyDown={inputEnterText} />
         <button onClick={newTaskButtonClick}><i className='fa-solid fa-plus fa-fade'></i></button>
       </div>
       <div className='App__task-list'>
@@ -31,6 +40,7 @@ function App() {
       </div>
     </div>
   );
-}
+};
+
 
 export default App;
