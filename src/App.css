@@ -1,4 +1,6 @@
 .App {
+    box-shadow: 0 6px 50px var(--box-shadow);
+    position: relative;
     border-radius: 20px;
     padding: 12px;
     max-width: 600px;
@@ -6,7 +8,63 @@
     height: 90vh;
     display: flex;
     gap: 10px;
+    background-color: var(--color-1);
     flex-direction: column;
+}
+
+.settingsBox__themeChangeButton i {
+    display: block;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: var(--color-3);
+    border-radius: 100%;
+}
+
+
+
+.settingsBox__themeChangeButton.theme_open button._black {
+    left: -100%;
+    background: linear-gradient(90deg, rgb(70, 70, 70) 50%, black 50%);
+    transition: 300ms;
+}
+
+.settingsBox__themeChangeButton.theme_open button._blueBlack {
+    left: -210%;
+    background: linear-gradient(90deg, #00a9bf 50%, rgb(63, 63, 63) 50%);
+    transition: 400ms;
+}
+
+.settingsBox__themeChangeButton.theme_open button._grey {
+    left: -320%;
+    background: linear-gradient(90deg, #9f9f9f 50%, #525252 50%);
+    transition: 500ms;
+}
+
+.settingsBox__themeChangeButton.theme_open button._purple {
+    left: -430%;
+    background: linear-gradient(90deg, #955075 50%, #60253f 50%);
+    transition: 600ms;
+}
+
+
+
+.settingsBox__themeChangeButton button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    transition: 600ms;
+    width: 32px;
+    background: rgba(0, 0, 0, 0.3);
+    height: 32px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
 }
 
 .App>* {
@@ -16,6 +74,7 @@
 h1 {
     text-align: center;
     margin: 0;
+    color: var(--h1-color);
 }
 
 .App__control-center {
@@ -27,29 +86,33 @@ h1 {
     width: 50px;
     height: 50px;
     border: 0;
-    background-color: rgb(141, 141, 255);
+    background-color: var(--color-2);
     border-radius: 0 20px 20px 0;
 }
 
 .App__control-center input {
-    border: 1px solid rgb(141, 141, 255);
+    border: 1px solid var(--color-2);
     padding-left: 12px;
     font-size: 1em;
     flex-grow: 1;
     transition: 400ms;
     border-radius: 20px 0 0 20px;
-    background-color: rgb(219, 219, 255);
+    background-color: var(--color-0);
+}
+
+i {
+    color: var(--text-color);
 }
 
 .App__control-center input:focus-visible {
     outline: 0;
-    border: 2px solid rgb(141, 141, 255);
-    background-color: white;
+    background-color: var(--text-color);
 }
 
 .App__task-list {
     padding: 10px 12px;
-    background-color: rgb(219, 219, 255);
+    background: transparent;
+    border-bottom: 1px dotted var(--text-color);
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -59,7 +122,7 @@ h1 {
 }
 
 .task-item {
-    background-color: rgb(184, 184, 255);
+    background-color: var(--color-2);
     border-radius: 16px;
     padding: 4px 12px;
     display: flex;
@@ -75,7 +138,7 @@ h1 {
 .task-item button.check {
     border-radius: 50%;
     background: 0;
-    border: 2px solid rgb(141, 141, 255);
+    border: 2px solid var(--text-color);
 }
 
 .task-item button.close {
@@ -102,6 +165,7 @@ i {
 .task-item p {
     text-align: center;
     flex-grow: 1;
+    color: var(--text-color);
 }
 
 .App__task-list::-webkit-scrollbar-track {
@@ -120,15 +184,59 @@ i {
     background-image: -webkit-gradient(linear,
             left bottom,
             left top,
-            color-stop(0.44, #c1c1ff),
-            color-stop(0.72, #b8b8ff),
-            color-stop(0.86, #8d8dff));
+            color-stop(0.44, var(--color-2)),
+            color-stop(0.72, var(--color-3)),
+            color-stop(0.86, var(--color-4)));
 }
 
-.task_complete{
+.task_complete {
     opacity: 0.5;
 }
 
-.task_complete i.fa-check{
+.task_complete i.fa-check {
     opacity: 1;
+}
+
+.App__settingsBox {
+    right: 20px;
+    bottom: 30px;
+    position: absolute;
+}
+
+.settingsBox__button {
+    transition: all 0.7s cubic-bezier(0.92, -0.49, 0.7, 1.65);
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    border: 0px;
+    background-color: var(--color-4);
+    font-size: 20px;
+    color: var(--text-color);
+    z-index: 15;
+}
+
+.themeChangeButton_open .childButton {
+    top: -80% !important
+}
+
+.themeChangeButton_open .settingsBox__button {
+    transform: scale(110%);
+}
+
+.settingsBox__themeChangeButton {
+    padding: 0;
+    position: absolute;
+    z-index: 12;
+    background-color: var(--color-3);
+    border-radius: 100%;
+    color: var(--text-color);
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+    border: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.7s cubic-bezier(0.92, -0.49, 0.7, 1.65);
 }

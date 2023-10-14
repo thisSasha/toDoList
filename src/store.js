@@ -2,13 +2,27 @@ import { mainRender } from ".";
 let taskListStore = [
 
 ];
-if(localStorage.getItem('localTaskList')){
-    taskListStore = JSON.parse(localStorage.getItem('localTaskList'));
+
+
+
+
+function localSave() {
+    localStorage.setItem('localTaskList', JSON.stringify(taskListStore));
+    localStorage.setItem('localTheme', selectedThemeStore);
 };
 
-function localSave(){
-    localStorage.setItem('localTaskList', JSON.stringify(taskListStore));
+
+
+
+export let selectedThemeStore = '_blueBlack';
+
+export function selectedThemeSet(theme) {
+    selectedThemeStore = theme;
+    localSave();
+    mainRender();
 };
+
+
 
 export function newTaskStore(text) {
     let newTask = {
@@ -47,5 +61,13 @@ function changeTasksId() {
     };
 };
 
+
+
+if (localStorage.getItem('localTaskList')) {
+    taskListStore = JSON.parse(localStorage.getItem('localTaskList'));
+};
+if (localStorage.getItem('localTheme')) {
+    selectedThemeStore = localStorage.getItem('localTheme');
+};
 
 export default taskListStore;
