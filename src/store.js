@@ -1,4 +1,5 @@
 import { mainRender } from ".";
+
 let taskListStore = [
 
 ];
@@ -14,7 +15,25 @@ function localSave() {
 
 
 
+export let renamedTaskText = 'SUI';
+export let wrapperStatus = 'hide';
+
+export function changeWrapperStatus(id = 528) {
+    if(wrapperStatus == 'hide'){
+        wrapperStatus = 'visible';
+        renamedTaskText = taskListStore[id].text;
+    } else {
+        wrapperStatus = 'hide';
+    };
+
+    mainRender()
+};
+
+
+
+
 export let selectedThemeStore = '_blueBlack';
+export let selectedGroup = 'All';
 
 export function selectedThemeSet(theme) {
     selectedThemeStore = theme;
@@ -45,6 +64,10 @@ export function toogleTaskStatus(id) {
     };
     localSave();
     mainRender()
+};
+
+export function renameTask(id, changedText) {
+    taskListStore[id].text = changedText;
 };
 
 export function deleteTask(id) {

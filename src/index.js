@@ -14,8 +14,6 @@ export function mainRender(){
       <App />
     </React.StrictMode>
   );
-
-  console.log(document.body);
 };
 mainRender()
 

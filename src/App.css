@@ -130,20 +130,32 @@ i {
     gap: 6px;
 }
 
+.task-item input {
+    background-color: var(--color-2);
+    border: 0;
+    font-size: 16px;
+    text-align: center;
+    color: var(--text-color);
+}
+
 .task-item button {
     width: 24px;
+    cursor: pointer;
     height: 24px;
+    background: 0;
+    border-radius: 50%;
+}
+
+.task-item button.rename {
+    border: 0;
+    font-size: 1.4em;
 }
 
 .task-item button.check {
-    border-radius: 50%;
-    background: 0;
     border: 2px solid var(--text-color);
 }
 
 .task-item button.close {
-    border-radius: 50%;
-    background: 0;
     border: 0;
     font-size: 1.4em;
 }
@@ -239,4 +251,66 @@ i {
     top: 50%;
     transform: translate(-50%, -50%);
     transition: all 0.7s cubic-bezier(0.92, -0.49, 0.7, 1.65);
+}
+
+.wrapper{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: var(--wrapper-color);
+    z-index: 250000;
+    top: 0;
+    left: 0;
+    display: flex;
+    transition: 400ms;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.renameBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    background-color: var(--color-1);
+    padding: 32px;
+    width: 90%;
+    border-radius: 20px;
+    max-width: 320px;
+}
+
+.renameBlock h3{
+    color: var(--text-color);
+    margin: 0;
+}
+
+.renameBlock input{
+    width: 100%;
+    height: 3.2vh;
+    max-height: 40px;
+    color: var(--text-color);
+    border: var(--color-4) 2px solid;
+    background-color: var(--color-3);
+    border-radius: 6px;
+}
+
+.renameBlock button{
+    width: 100%;
+    height: 3.2vh;
+    max-height: 40px;
+    color: var(--text-color);
+    border: var(--color-4) 2px solid;
+    background-color: var(--color-3);
+    border-radius: 6px;
 }

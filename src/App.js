@@ -1,6 +1,9 @@
 import './App.css';
+import Rename from './react-components/Rename';
 import Task from './react-components/Task';
-import taskListStore, { newTaskStore, selectedThemeSet, selectedThemeStore } from './store';
+import taskListStore, { changeWrapperStatus, newTaskStore, selectedThemeSet, selectedThemeStore } from './store';
+
+let renameTaskOpen;
 
 function App() {
   let tasks = taskListStore.map((taskInfo) =>
@@ -39,6 +42,10 @@ function App() {
       };
     };
   };
+  
+  renameTaskOpen = function (id) {
+    changeWrapperStatus(id);
+  };
 
   function themeChangeButtonClick(e) {
     e.target.parentNode.classList.toggle('themeChangeButton_open');
@@ -67,9 +74,11 @@ function App() {
           <button className='_purple' onClick={themeChange}></button>
         </button>
       </div>
+      <Rename></Rename>
     </div>
   );
+
 };
 
-
 export default App;
+export { renameTaskOpen};
